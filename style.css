@@ -1,0 +1,186 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Be Vietnam Pro', sans-serif;
+}
+
+/* header */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    padding-bottom: 20px;
+}
+
+.site-header {
+    height: 74px;
+    display: flex;
+    align-items: center;
+}
+
+.logo-header {
+    width: 52%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.img-logo {
+    height: 50px;
+    width: 54px;
+}
+
+.header-wrap-icon {
+    width: 48%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.header-wrap-icon > span > a{
+    color: #000;
+    font-size: 18px;
+    margin: 0 8px;
+}
+
+.header-navbar {
+    width: 1200px;
+    display: flex;
+    margin: auto;
+}
+
+.header-navbar .navbar-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+}
+
+.header-navbar .navbar-list > li > a{
+    font-size: 12px;
+    padding-right: 24px;
+    margin-right: 24px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #000;
+    position: relative;
+}
+
+.subnav {
+    min-width: 160px;
+    background-color: #fff;
+    border-radius: 2px;
+    margin-top: 10px;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    position: absolute;
+    list-style: none;
+    border-top: 1px solid #000;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
+}
+
+.subnav::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 12px;
+    position: absolute;
+    top: -12px;
+    left: 24px;
+}
+
+.subnav li {
+    margin: 4px 20px;
+}
+
+.subnav li a {
+    display: block;
+    padding: 4px 0;
+    font-size: 12px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #000;
+}
+
+.header-navbar .navbar-list > li:hover .subnav {
+    display: flex;
+}
+
+
+/* content */
+.background {
+    margin-top: 116px;
+    padding-top: 50%;
+    background: url('https://file.hstatic.net/200000033444/file/banner_web_lap_340709f3cc5d4388b6a4af59028f47fe.jpg') top center / cover no-repeat;
+}
+
+/* product */
+
+.product_item-img {
+    position: relative;
+}
+
+.product_item-img {
+    position: relative;
+}
+
+/* banner */
+.slide-banner {
+    padding: 0 20px;
+    margin: 20px 0;
+    display: flex;
+}
+
+.left-banner {
+    width: 50%;
+    padding: 10%;
+    background: url('https://file.hstatic.net/200000033444/file/nut_bam_nam_d250de1dbb014e5b86fe3d9e714c59f6.jpg') top center / cover no-repeat;
+    position: relative;
+}
+
+.left-banner-link {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.right-banner {
+    width: 50%;
+    padding: 10%;
+    background: url('https://file.hstatic.net/200000033444/file/nut_bam_nu_ae2efb4a50a64b5c8c87cab7edfe6e8e.jpg') top center / cover no-repeat;
+    position: relative;
+}
+
+
+
+/* formen */
+.background.for-men {
+    background: url('https://file.hstatic.net/200000033444/file/trang_chuyen_muc_nam_79e3d59dca4c43b8869e284004edae08.jpg') top center / cover no-repeat;
+    padding: 20%;
+}
+
+.background.for-women {
+    background: url('https://file.hstatic.net/200000033444/file/chuyen_muc_nu_e9a23d0e6c7e4bc7983f3fe9efd21da8.jpg') top center / cover no-repeat;
+    padding: 20%;
+}
+
+.background.accessories {
+    background: url('') top center / cover no-repeat;
+    padding: 0;
+}
+
+.background.tote-bag {
+    background: url('') top center / cover no-repeat;
+    padding: 0;
+}
+
+.main {
+    margin-top: 112px;
+}

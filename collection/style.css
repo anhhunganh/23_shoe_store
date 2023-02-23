@@ -1,0 +1,12 @@
+.container {
+    margin-top: 112px;
+    display: flex;
+}
+
+.product-detail,
+.product-content {
+    position: sticky;
+    top: calc(10% + 112px);
+    left: 0;
+    height: 15%;
+}
