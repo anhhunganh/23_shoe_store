@@ -3,7 +3,7 @@
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    require './root/connect.php';
+    require '../root/connect.php';
 
     $sql = "select * from admin where email = '$email' and password = '$password'";
     $result = mysqli_query($connect, $sql);
@@ -15,7 +15,7 @@
         $_SESSION['admin_name'] = $each['name'];
         $_SESSION['admin_level'] = $each['level'];
 
-        header('location:./root/index.php');
+        header('location:../root/index.php');
         exit;
     }
     $_SESSION['error'] = "Đăng nhập không thành công";

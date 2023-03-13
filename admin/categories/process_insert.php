@@ -2,7 +2,8 @@
     require '../check_super_admin_login.php';
 
     $name = $_POST['name'];
-    $image = $_FILES['image'];
+    $manufacturer_id = $_POST['manufacturer_id'];
+    // $image = $_FILES['image'];
 
     if(empty($name)){
         $_SESSION['error'] = 'Phải điền đầy đủ thông tin';
@@ -10,12 +11,12 @@
         exit;
     }
 
-    $folder = './img/';
-    $file_extension = explode('.', $image['name'])[1];
-    $file_name = time() . '.' . $file_extension;
-    $path_file = $folder . $file_name;
+    // $folder = './img/';
+    // $file_extension = explode('.', $image['name'])[1];
+    // $file_name = time() . '.' . $file_extension;
+    // $path_file = $folder . $file_name;
 
-    move_uploaded_file($image['tmp_name'], $path_file);
+    // move_uploaded_file($image['tmp_name'], $path_file);
 
     require '../root/connect.php';
 
@@ -28,8 +29,8 @@
         exit;
     }
 
-    $sql = "insert into categories (name, image)
-            values ('$name', '$file_name')";
+    $sql = "insert into categories (name, manufacturer_id)
+            values ('$name', '$manufacturer_id')";
     mysqli_query($connect, $sql);
     $error = mysqli_error($connect);
     mysqli_close($connect);

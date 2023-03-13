@@ -3,11 +3,14 @@
 
     $name = $_POST['name'];
     $price = $_POST['price'];
+    $manufacturer_id = $_POST['manufacturer_id'];
     $category_id = $_POST['category_id'];
+    $sub_category_id = $_POST['sub_category_id'];
     $image = $_FILES['image'];
     
-    if(empty($name) || empty($price) || empty($category_id)) {
-        header('location:./form_insert.php?error=Thông tin không được để trống');
+    if(empty($name) || empty($price) || empty($category_id) || empty($manufacturer_id) || empty($sub_category_id) ) {
+        $_SESSION['error'] = "Thông tin không được để trống";
+        header('location:./form_insert.php');
         exit;
     }
 
@@ -23,7 +26,8 @@
 
         move_uploaded_file($image['tmp_name'], $path_file);
     } else {
-        header('location:./form_insert.php?error=Thông tin không được để trống');
+        $_SESSION['error'] = "Thông tin không được để trống";
+        header('location:./form_insert.php');
         exit;
     }
 
@@ -38,24 +42,24 @@
     }
 
 
-    $sql = "insert into products(name, price, category_id, image)
-            values('$name', '$price', '$category_id', '$file_name')";
+    $sql = "insert into products(name, price, image, sub_category_id)
+            values('$name', '$price', '$file_name', '$sub_category_id')";
     mysqli_query($connect, $sql);
 
-    $last_id_product = mysqli_insert_id($connect);
-    
-    $sql_id_size = "select size.id as id from size";
-    $result_id_size = mysqli_query($connect, $sql_id_size);
-    $number_id_size = mysqli_num_rows($result_id_size);
-    $arr_id_size = [];
+        // $last_id_product = mysqli_insert_id($connect);
+        
+        // $sql_id_size = "select size.id as id from size";
+        // $result_id_size = mysqli_query($connect, $sql_id_size);
+        // $number_id_size = mysqli_num_rows($result_id_size);
+        // $arr_id_size = [];
 
-    foreach ($result_id_size as $each_id_size) {
-        $arr_id_size['size_id'] = $each_id_size['id'];
-        for($i = 0; $i < $number_id_size; $i++) {
-             $sql_product_size = "insert into product_size(product_id, size_id)
-                                 values('$last_id_product', '{$arr_id_size['size_id']}')";
-        }
-        mysqli_query($connect, $sql_product_size);
-    }
+        // foreach ($result_id_size as $each_id_size) {
+        //     $arr_id_size['size_id'] = $each_id_size['id'];
+        //     for($i = 0; $i < $number_id_size; $i++) {
+        //          $sql_product_size = "insert into product_size(product_id, size_id)
+        //                              values('$last_id_product', '{$arr_id_size['size_id']}')";
+        //     }
+        //     mysqli_query($connect, $sql_product_size);
+        // }
     header('location:./index.php?success=Thêm sản phẩm thành công');
     exit;
