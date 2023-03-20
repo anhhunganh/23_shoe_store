@@ -19,6 +19,16 @@
     ?>
     <div class="container">
         <?php require './header.php' ?>
+        <div class="content">
+            <h2>
+                <?php 
+                if(isset($_SESSION['error'])){
+                    echo $_SESSION['error'];
+                    unset($_SESSION['error']);
+                }
+                ?>
+            </h2>
+        </div>
     </div>
     </div>
 </body>

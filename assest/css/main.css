@@ -1,0 +1,419 @@
+:root {
+    --black-color: #000;
+    --white-color: #fff;
+    --text-color: #252a2b;
+    --main-color: #fd7f32;
+    --sub-color: #8c52fe;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+
+html {
+    /* font-size: 62.5%; */
+    scroll-behavior: smooth;
+    font-family: 'Be Vietnam Pro', sans-serif;
+}
+
+.header {
+    /* height: 200vh; */
+}
+
+.header-top {
+}
+
+.header-logo__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-logo__img {
+    height: 110px;
+    width: 250px;
+}
+
+.header-wrap {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.wrap-item {
+    margin-right: 12px;
+}
+
+.header-bottom {
+    background-color: #f1f1f1;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+}
+
+.header-bottom__list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-bottom__item {
+    padding: 4px 8px;
+}
+
+.header-bottom__item-link {
+    padding: 8px 12px;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+/* content */
+.content {
+    margin-top: 120px;
+}
+
+.container {
+    margin-top: 40px;
+}
+
+.container-background__img {
+    padding-top: 40%;
+    margin-top: -40px;
+    background: url('../img/dscf5622-2-1536x1536.jpg') center / cover;
+}
+
+.section-title {
+    align-items: center;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    position: relative;
+    width: 100%;
+    margin: 40px 0 20px 0;
+}
+
+.section-title b {
+    background-color: currentColor;
+    display: block;
+    flex: 1;
+    height: 2px;
+    opacity: .1;
+}
+
+.section-title h2 {
+    text-align: center;
+    text-transform: uppercase;
+    padding: 0 20px;
+}
+
+.container-btn {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-btn__link {
+    padding: 8px 24px;
+    border: 1px solid #000;
+    color: var(--text-color);
+}
+
+.container-btn__link:hover {
+    background-color: #000;
+    color: var(--white-color);
+}
+
+.filter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+.filter-right {
+    display: flex;
+    align-items: center;
+}
+
+.filter-right__text {
+    font-size: 14px;
+    color: var(--text-color);
+    margin-right: 12px;
+}
+
+.filter-right__select {
+    padding: 8px 12px;
+    outline: none;
+}
+
+.product-item {
+    margin-top: 12px;
+}
+
+.product-item__link {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items:center
+}
+
+.product-item__img {
+    height: 240px;
+    width: 240px;
+}
+
+.product-item__name {
+    font-size: 14px;
+    color: var(--text-color);
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 500;
+    line-height: 20px;
+    max-width: 320px;
+}
+
+.product-item__price {
+    color: var(--text-color);
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: 8px;
+}
+
+/* footer */
+
+#footer {
+    margin-top: 80px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.footer-top {
+    padding: 40px 0;
+
+}
+
+.footer__item {
+
+}
+
+.footer__item-heading {
+    color: var(--text-color);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+.footer__item-wrap {
+    padding: 8px 4px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.footer__item-icon {
+    color: var(--text-color);
+    font-size: 14px;
+}
+
+.footer__item-link {
+    margin-left: 8px;
+    font-size: 14px;
+    color: var(--text-color);
+}
+
+.footer__item-link > i {
+    margin-left: 8px;
+    padding: 4px;
+    font-size: 24px;
+    color: var(--text-color);
+    border: 1px solid #ccc;
+    border-radius: 50%;
+}
+
+.footer__item-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.footet__item-input {
+    padding: 4px 8px;
+    height: 32px;
+    width: 240px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+}
+
+.footet__item-btn {
+    margin-top: 8px;
+    height: 32px;
+    width: 100%;
+    background-color: var(--black-color);
+    border: 1px solid var(--black-color);
+    border-radius: 4px;
+    color: var(--white-color);
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.footer-bottom {
+    padding: 10px 0;
+    background-color: #252a2b;
+    color: #ccc;
+    text-align: center;
+    font-size: 12px;
+}
+
+.return-header {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+}
+
+.return-header > a > i {
+    font-size: 30px;
+    color: #ccc;
+}
+
+
+/* product_detail.php */
+
+.product-detail {
+}
+
+.product-gallery__img {
+    height: 580px;
+    width: 580px;
+}
+
+.product-gallery__list {
+    margin-top: -60px;
+}
+
+.product-gallery__item-img {
+    width: 120px;
+    height: 120px;
+}
+
+.product-gallery__item:hover {
+    border: 1px solid #ccc;
+}
+
+.product-info {
+    /* margin-right: 80px; */
+    padding: 40px;
+}
+
+.product-info__name {
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.product-info__price {
+    margin-top: 24px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #ff2419;
+}
+
+.product-info__size {
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.product-info__size-link {
+    color: #555;
+    margin-left: 4px;
+}
+
+.product-installment {
+    margin-top: 32px;
+}
+
+.product-installment__price {
+
+}
+
+.product-installment__price span {
+    font-weight: 600;
+}
+
+.product-installment__price a {
+    color: var(--text-color);
+}
+
+.product-installment__price a span {
+    color: #24c3fd;
+}
+
+.product-installment__panel {
+
+    margin-top: 4px;
+    padding: 4px 8px;
+    border-top: 3px solid #24c3fd;
+    background: #E9F7FA;
+}
+
+.product-installment__panel {
+    font-weight: 600;
+}
+
+.product-installment__panel-icon {
+    margin-right: 4px;
+}
+
+.product-installment__panel span {
+    color: #ff2419;
+}
+
+.product-size {
+    margin: 32px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.product-size__label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-size__input {
+    display: none;
+}
+
+.product-size__span {
+    height: 42px;
+    width: 42px;
+    display: inline-block;
+    text-align: center;
+    line-height: 42px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.product-size__input:checked +.product-size__span {
+    border: 2px solid #555;
+}

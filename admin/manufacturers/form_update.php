@@ -47,7 +47,7 @@ require '../check_super_admin_login.php';
                         <label>
                             <span>Địa chỉ Nhà sản xuất</span>
                             <input type="text" name="address" value="<?php //echo $each['address'] ?>">
-                        </label><br>
+                        </label><br> -->
                         <label>
                             <span>Ảnh cũ Nhà sản xuất</span>
                             <input type="hidden" name="image_old" value="<?php //echo $each['image'] ?>">
@@ -56,7 +56,7 @@ require '../check_super_admin_login.php';
                         <label>
                             <span>Thay ảnh mới: </span>
                             <input type="file" name="image">
-                        </label><br> -->
+                        </label><br>
                         <button>Sửa thông tin Nhà sản xuất</button>
                     </form>
                 </div>

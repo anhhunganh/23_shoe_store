@@ -28,8 +28,8 @@ require '../check_super_admin_login.php';
         $page = (int)$_GET['page'];
     }
 
-    $number_items_of_page = 100;
-    $sql_number_items = "select count(*) from categories";
+    $number_items_of_page = 20;
+    $sql_number_items = "select count(*) from categories where name like '%$search%'";
     $result_arr_number_items = mysqli_query($connect, $sql_number_items);
     $number_items = mysqli_fetch_array($result_arr_number_items)['count(*)'];
     $skip_number_items = $number_items_of_page * ($page - 1);
@@ -39,37 +39,45 @@ require '../check_super_admin_login.php';
     $sql = "select categories.*, manufacturers.name as manufacturer_name
             from 
                 categories join manufacturers on categories.manufacturer_id = manufacturers.id
-            where categories.name like '%$search%' limit $number_items_of_page offset $skip_number_items";
+            where categories.name like '%$search%' or manufacturers.name like '%$search%' limit $number_items_of_page offset $skip_number_items";
     $result = mysqli_query($connect, $sql);
-
     ?>
     <div class="main">
         <?php require '../root/menu.php' ?>
         <div class="container">
             <?php require '../root/header.php' ?>
             <div class="content">
-                <h2 class="row content__heading">Quản lý Loại sản phẩm</h2>
-                <div><a href="./form_insert.php">Thêm loại sản phẩm</a></div>
-                <div>
+                <div class="grid">
+                    <h2 class="row content__heading">Quản lý Danh mục sản phẩm</h2>
+                    <div class="row">
+                        <div class="col l-o-2"></div>
+                        <div class="col l-8">
+                            <a class="add-item__link" href="./form_insert.php">
+                                Thêm Danh mục sản phẩm
+                            </a>
+
+                            <table>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Thương hiệu</th>
+                                    <th>Update</th>
+                                    <th>Delete</th>
+                                </tr>
+                                <?php foreach ($result as $each) { ?>
+                                    <tr>
+                                        <td class="td-item__name"><?php echo $each['name'] ?></td>
+                                        <td class="text-center"><?php echo $each['manufacturer_name'] ?></td>
+                                        <!-- <td><img height="200" src="img/<?php //echo $each['image'] 
+                                                                            ?>" alt=""></td> -->
+                                        <td class="td-item__update text-center"><a href="./form_update.php?id=<?php echo $each['id'] ?>">Update</a></td>
+                                        <td class="td-item__delete text-center"><a href="./process_delete.php?id=<?php echo $each['id'] ?>">Delete</a></td>
+                                    </tr>
+                                <?php } ?>
+                            </table>
+                        </div>
+                        <div class="col l-o-2"></div>
+                    </div>
                 </div>
-                <table>
-                    <tr>
-                        <td>Name</td>
-                        <td>Thương hiệu</td>
-                        <td>Update</td>
-                        <td>Delete</td>
-                    </tr>
-                    <?php foreach ($result as $each) { ?>
-                        <tr>
-                            <td><?php echo $each['name'] ?></td>
-                            <td><?php echo $each['manufacturer_name'] ?></td>
-                            <!-- <td><img height="200" src="img/<?php //echo $each['image'] 
-                                                                ?>" alt=""></td> -->
-                            <td><a href="./form_update.php?id=<?php echo $each['id'] ?>">Update</a></td>
-                            <td><a href="./process_delete.php?id=<?php echo $each['id'] ?>">Delete</a></td>
-                        </tr>
-                    <?php } ?>
-                </table>
                 <div class="row">
                     <div class="pagination col l-12">
                         <div class="pagination__item">
@@ -96,6 +104,7 @@ require '../check_super_admin_login.php';
                     </div>
                 </div>
             </div>
+            <?php require '../root/footer.php' ?>
         </div>
     </div>
 </body>

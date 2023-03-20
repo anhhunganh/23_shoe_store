@@ -7,7 +7,6 @@ if (isset($_GET['page'])) {
         exit;
     }
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,8 +35,8 @@ if (isset($_GET['page'])) {
                         Quản lý Hãng sản xuất
                     </h2>
                     <div class="row statistic">
-                        <div class="col l-o-3"></div>
-                        <div class="col l-3">
+                        <div class="col l-o-4"></div>
+                        <div class="col l-4">
                             <div class="statistic__item">
                                 <i class="fa-solid fa-shop statistic__icon"></i>
                                 <div class="statistic__wrap">
@@ -52,69 +51,71 @@ if (isset($_GET['page'])) {
                             </div>
 
                         </div>
-                        <div class="col l-3">
-                            <div class="statistic__item">
-                                <div class="statistic__wrap">
-                                    <div class="statistic__text">Hãng được yêu thích</div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="col l-o-3"></div>
+                        <div class="col l-o-4"></div>
                     </div>
-                    <div><a href="./form_insert.php">Thêm hãng sản xuất</a></div>
-                    <div>
-                        <?php
-                        $search = '';
-                        if (isset($_GET['search'])) {
-                            $search = $_GET['search'];
-                        }
-                        $page = 1;
-                        if (isset($_GET['page'])) {
-                            $page = (int) $_GET['page'];
-                        }
+                    <div class="row">
+                        <div class="l-o-2"></div>
+                        <div class="l-8">
+                            <a class="add-item__link" href="./form_insert.php">
+                                Thêm hãng sản xuất
+                            </a>
+                            <div>
+                                <?php
+                                $search = '';
+                                if (isset($_GET['search'])) {
+                                    $search = $_GET['search'];
+                                }
+                                $page = 1;
+                                if (isset($_GET['page'])) {
+                                    $page = (int) $_GET['page'];
+                                }
 
-                        $sql = "select * from manufacturers";
-                        $result = mysqli_query($connect, $sql);
+                                $sql = "select * from manufacturers";
+                                $result = mysqli_query($connect, $sql);
 
-                        $number_items_of_page = 10; //Số item trên 1 trang
+                                $number_items_of_page = 20; //Số item trên 1 trang
 
-                        $sql_number_items = "select count(*) from manufacturers where name like '%$search%'";
-                        $result_arr_number_items = mysqli_query($connect, $sql_number_items);
-                        $number_items = mysqli_fetch_array($result_arr_number_items)['count(*)'];
-                        $skip_number_items = $number_items_of_page * ($page - 1); //
+                                $sql_number_items = "select count(*) from manufacturers where name like '%$search%'";
+                                $result_arr_number_items = mysqli_query($connect, $sql_number_items);
+                                $number_items = mysqli_fetch_array($result_arr_number_items)['count(*)'];
+                                $skip_number_items = $number_items_of_page * ($page - 1); //
 
-                        $number_of_pages = ceil($number_items / $number_items_of_page);
+                                $number_of_pages = ceil($number_items / $number_items_of_page);
 
 
-                        $sql = "select manufacturers.* from manufacturers
+                                $sql = "select manufacturers.* from manufacturers where name like '%$search%'
                                 limit $number_items_of_page offset $skip_number_items";
-                        $result = mysqli_query($connect, $sql);
-                        $num_row = mysqli_num_rows($result);
-                        ?>
-                        <form action="">
-                            <input type="text" name="search" placeholder="Tìm kiếm Nhà sản xuất">
-                            <button>Search</button>
-                        </form>
-                    </div>
-                    <table>
-                        <tr>
-                            <td>Tên</td>
-                            <td>Update</td>
-                            <?php if ($_SESSION['admin_level'] == 1) { ?>
-                                <td>Delelte</td>
-                            <?php } ?>
-                        </tr>
-                        <?php foreach ($result as $each) { ?>
-                            <tr>
-                                <td><a href="./product_info.php?id=<?php echo $each['id'] ?>"><?php echo $each['name'] ?></a></td>
-                                <td><a href="./form_update.php?id=<?php echo $each['id'] ?>">Update</a></td>
-                                <?php if ($_SESSION['admin_level'] == 1) { ?>
-                                    <td><a href="./process_delete.php?id=<?php echo $each['id'] ?>">Delete</a></td>
+                                $result = mysqli_query($connect, $sql);
+                                $num_row = mysqli_num_rows($result);
+                                ?>
+                            </div>
+                            <table>
+                                <tr>
+                                    <th class="td-item__name td-item__name-manufacturer">Tên</th>
+                                    <th>Image</th>
+                                    <th class="td-item__update">Update</th>
+                                    <?php if ($_SESSION['admin_level'] == 1) { ?>
+                                        <th class="td-item__delete">Delelte</th>
+                                    <?php } ?>
+                                </tr>
+                                <?php foreach ($result as $each) { ?>
+                                    <tr>
+                                        <td class="td-item__name"><a href="./product_info.php?id=<?php echo $each['id'] ?>"><?php echo $each['name'] ?></a></td>
+                                        <td class="text-center">
+                                            <a href="./product_info.php?id=<?php echo $each['id'] ?>">
+                                                <img height="100" src="./img/<?php echo $each['image'] ?>" alt="">
+                                            </a>
+                                        </td>
+                                        <td class="td-item__update"><a href="./form_update.php?id=<?php echo $each['id'] ?>">Update</a></td>
+                                        <?php if ($_SESSION['admin_level'] == 1) { ?>
+                                            <td class="td-item__delete"><a href="./process_delete.php?id=<?php echo $each['id'] ?>">Delete</a></td>
+                                        <?php } ?>
+                                    </tr>
                                 <?php } ?>
-                            </tr>
-                        <?php } ?>
-                    </table>
+                            </table>
+                        </div>
+                        <div class="col l-o-2"></div>
+                    </div>
                     <div class="row">
                         <div class="pagination col l-12">
                             <div class="pagination__item">
@@ -142,6 +143,7 @@ if (isset($_GET['page'])) {
                     </div>
                 </div>
             </div>
+            <?php require '../root/footer.php' ?>
         </div>
     </div>
 </body>

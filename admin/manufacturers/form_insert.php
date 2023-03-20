@@ -26,6 +26,10 @@ require '../check_super_admin_login.php';
                         <span>Tên Nhà sản xuất: </span>
                         <input type="text" name="name">
                     </label><br>
+                    <label>
+                        <span>Ảnh Nhà sản xuất: </span>
+                        <input type="file" name="image">
+                    </label><br>
                     <button>Thêm Nhà sản xuất: </button>
                 </form>
             </div>

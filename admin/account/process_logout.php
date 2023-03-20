@@ -4,4 +4,4 @@
     unset($_SESSION['admin_name']);
     unset($_SESSION['admin_level']);
 
-    header('location:./lgoin.php');
+    header('location:./login.php');

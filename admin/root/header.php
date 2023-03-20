@@ -30,7 +30,7 @@
         </li>
         <li class="header__item">
             <a class="header__item-link" href="../account/process_logout.php">
-                <i class="header__item-icon fa-solid fa-power-off"></i>
+                <i class="header__item-icon header__item-statut <?php if(isset($_SESSION['admin_level'])) {echo "header__item-statut-on"; }else { echo "header__item-statut-off"; } ?> fa-solid fa-power-off"></i>
             </a>
         </li>
     </ul>

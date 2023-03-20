@@ -34,7 +34,7 @@
     <div style="display: flex; flex-direction: column;">
         <div class="contet" style="margin: auto; width: 600px;">
             <div style="display: flex; justify-content: center; height: 80px; background-color: black;">
-                <a style="text-decoration: none; margin: auto;" href="http://localhost/23_shoe_store/home/index.php">
+                <a target=”_blank” style="text-decoration: none; margin: auto;" href="http://localhost/23_shoe_store/home/index.php">
                     <h1 style="color: #fff;">23 Shoe Store</h1>
                 </a>
             </div>
@@ -42,7 +42,7 @@
                 <h3 style="font-size: 24px;">Xin chào ' .  $name . ',</h3>
                 <div style="font-size: 20px;">
                     Cảm ơn bạn đã đến với chùng tôi, bạn có thể thay đổi thông tin của bạn tại
-                    <a href="http://localhost/23_shoe_store/account/index.php">đây. </a>
+                    <a target=”_blank” href="http://localhost/23_shoe_store/account/index.php">đây. </a>
                 </div><br>
                 <div style="font-size: 20px;">
                     Chúc bạn có thể tìm được sản phẩm như ý trong cửa hàng của chúng tôi.
@@ -50,23 +50,23 @@
             </div>
             <hr>
             <div>
-                Xem tất cả sản phẩm của chúng tôi <a href="http://localhost/23_shoe_store/collection/index.php">23 shoe store</a>
+                Xem tất cả sản phẩm của chúng tôi <a target=”_blank” href="http://localhost/23_shoe_store/collection/index.php">23 shoe store</a>
             </div>
             <br>
             <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; background-color: black;">
-                <a style="margin: 8px; text-decoration: none; color: #fff;" href="http://maps.google.com/">
+                <a target=”_blank” style="margin: 8px; text-decoration: none; color: #fff;" href="http://maps.google.com/">
                     <div>
                         <i class="fa-solid fa-location-dot"></i>
                         <span style="margin-left: 8px;">Hai Bà Trưng - Hà Nội - Việt Nam</span>
                     </div>
                 </a>
-                <a style="margin: 8px; text-decoration: none; color: #fff;" href="tel:+84988686868">
+                <a target=”_blank” style="margin: 8px; text-decoration: none; color: #fff;" href="tel:+84988686868">
                     <div>
                         <i class="fa-solid fa-phone"></i>
                         <span style="margin-left: 8px;">+84 988 686 868</span>
                     </div>
                 </a>
-                <a style="margin: 8px; text-decoration: none; color: #fff;" href="mailto:23shoestore.ha@gmail.com">
+                <a target=”_blank” style="margin: 8px; text-decoration: none; color: #fff;" href="mailto:23shoestore.ha@gmail.com">
                     <div>
                         <i class="fa-solid fa-envelope"></i>
                         <span style="margin-left: 8px;">23shoestore.ha@gmail.com</span>
