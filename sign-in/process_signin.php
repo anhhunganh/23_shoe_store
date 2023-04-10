@@ -1,10 +1,31 @@
 <?php
     session_start();
 
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    $email = addslashes($_POST['email']);
+    $password = addslashes($_POST['password']);
 
     require '../admin/root/connect.php';
+
+    if(empty($email) || empty($password)) {
+        $_SESSION['empty_value'] = '(*) Thông tin không được để trống';
+        header('location:./index.php');
+        exit;
+    }
+
+    $regex_email = '/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/';
+    $regex_password = '/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/';
+
+    if(!preg_match($regex_email, $email)) {
+        $_SESSION['error_email'] = '(*) Email không hợp lê vui lòng thử lại.';
+        header('location:./index.php');
+        exit;
+    }
+
+    if(!preg_match($regex_password, $password)) {
+        $_SESSION['error_password'] = '(*) Mật khẩu ít nhất 8 ký tự chứa 1 số 1 chữ cái.';
+        header('location:./index.php');
+        exit;
+    }
 
     if(isset($_POST['remember'])){
         $remember = true;
@@ -29,9 +50,9 @@
             $sql = "update customers set token = '$token' where id = '$id'";
             mysqli_query($connect, $sql);
         }
-        header('location:../account/');
+        header('location:../account/index.php?view=main');
         exit;
     }
-        $_SESSION['error'] = 'Đăng nhập kkhoong thành ccoong';
+        $_SESSION['error_login'] = 'Đăng nhập không thành công!!!';
         header('location:./index.php');
         exit;

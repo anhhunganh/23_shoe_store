@@ -14,6 +14,18 @@
 
     $email = $_POST['email'];
 
+    if(empty($email)) {
+        header('location:./forgot_password.php');
+        $_SESSION['empty_value'] = '(*) Thông tin không được để trống';
+        exit;
+    }
+
+    $regex_email = '/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/';
+    if(!preg_match($regex_email, $email)) {
+        $_SESSION['error_email'] = '(*) Email không hợp lê vui lòng thử lại.';
+        header('location:./forgot_password.php');
+        exit;
+    }
 
     $sql = "select * from customers where email = '$email'";
     $result = mysqli_query($connect, $sql);
@@ -27,14 +39,14 @@
 
         $token = generateRandomString();
 
-        // $sql = "delete from forgot_password where customer_id = '$customer_id'";
-        // mysqli_query($connect, $sql);
+        $sql = "delete from forgot_password where customer_id = '$customer_id'";
+        mysqli_query($connect, $sql);
 
         $sql = "select forgot_password.* 
                 from forgot_password join customers on forgot_password.customer_id = customers.id 
                 where forgot_password.customer_id = $customer_id ";
         $result = mysqli_query($connect, $sql);
-        if(mysqli_num_rows($result) === 1){
+        if(!mysqli_num_rows($result) === 1){
             $_SESSION['error'] = "Bạn vui lòng kiểm tra email";
             header('location:./forgot_password.php');
             exit;
@@ -104,5 +116,5 @@
     }
 
     header('location:./forgot_password.php');
-    $_SESSION['error'] = 'Đã gửi email xác nhận quên mật khẩu. Bạn vui lòng kiểm tra email';
+    $_SESSION['success_forgot_password'] = 'Đã gửi email xác nhận quên mật khẩu. Bạn vui lòng kiểm tra email1';
     exit;

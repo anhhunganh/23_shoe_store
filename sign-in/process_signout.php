@@ -5,5 +5,5 @@
     unset($_SESSION['customer_id']);
     setcookie('remember', '', -1);
 
-    // header('location:../home/index.php');
+    header('location:../home/index.php');
 
