@@ -1,20 +1,56 @@
 <?php
     session_start();
 
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $address = $_POST['address'];
-    $phone_number = $_POST['phone_number'];
+    $name = addslashes($_POST['name']);
+    $email = addslashes($_POST['email']);
+    $password = addslashes($_POST['password']);
+    $address = addslashes($_POST['address']);
+    $phone_number = addslashes($_POST['phone_number']);
 
     require '../admin/root/connect.php';
 
+    if(empty($name) || empty($email) || empty($password) || empty($phone_number)) {
+        $_SESSION['empty_value'] = '(*) Thông tin không được để trống';
+        header('location:./index.php');
+        exit;
+    }
+
+    $regex_name = '/^[A-ZÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ][a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]*(?:[ ][A-ZÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ][a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]*)*$/';
+    $regex_email = '/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/';
+    $regex_password = '/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/';
+    $regex_phone_number = '/^(\+\d{1,2}\s?)?1?\-?\.?\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/';
+
+    if(!preg_match($regex_name, $name)) {
+        $_SESSION['error_name'] = '(*) Họ tên không hợp lệ vui lòng thử lại.';
+        header('location:./index.php');
+        exit;
+    }
+
+    if(!preg_match($regex_phone_number, $phone_number)) {
+        $_SESSION['error_phone_number'] = '(*) Số điện thoại không hợp lệ vui lòng thử lại.';
+        header('location:./index.php');
+        exit;
+    }
+
+    if(!preg_match($regex_email, $email)) {
+        $_SESSION['error_email'] = '(*) Email không hợp lê vui lòng thử lại.';
+        header('location:./index.php');
+        exit;
+    }
+
+    if(!preg_match($regex_password, $password)) {
+        $_SESSION['error_password'] = '(*) Mật khẩu ít nhất 8 ký tự chứa 1 số 1 chữ cái.';
+        header('location:./index.php');
+        exit;
+    }
+
+    
     $sql = "select count(*) from customers where email = '$email'";
     $result = mysqli_query($connect, $sql);
     $num_row = mysqli_fetch_array($result)['count(*)'];
 
     if($num_row == 1) {
-        $_SESSION['error'] = 'Email đã tồn tại.';
+        $_SESSION['error_email_exist'] = '(*) Email đã tồn tại.';
         header('location:./index.php');
         exit;
     }
@@ -82,3 +118,6 @@
 
     header('location:../collection/index.php');
     exit;
+
+
+
