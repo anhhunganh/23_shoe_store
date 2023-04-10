@@ -109,7 +109,7 @@ require '../check_admin_login.php';
                         </label><br>
                         <label>
                             <span>Thông tin chi tiết</span>
-                            <a href="./form_product_detail.php?id=<?php echo $id ?>">Sửa thông tin về sản phẩm</a>
+                            <a href="./form_product_detail.php?id=<?php echo $id ?>">Thêm ảnh phụ</a>
                         </label><br>
                         <button>Sửa thông tin sản phẩm</button>
                     </form>

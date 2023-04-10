@@ -27,35 +27,31 @@ require '../check_admin_login.php';
     if (isset($_GET['id'])) {
         $product_id = $_GET['id'];
     }
+
+    $sql = "select * from product_sub_images where product_id = '$product_id'";
+    $result = mysqli_query($connect, $sql);
     ?>
     <div class="main">
         <?php require '../root/menu.php' ?>
         <div class="container">
             <?php require '../root/header.php' ?>
             <div class="">
-                <form action="./process_insert_product_detail.php" method="post" enctype="multipart/form-data">
+                <h2>
+                    <?php if(isset($_SESSION['error'])) {
+                        echo $_SESSION['error'];
+                        unset($_SESSION['error']);
+                    } ?>
+                </h2>
+                <form id="form" action="./process_insert_product_detail.php" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="product_id" value="<?php echo $product_id ?>">
+                    <?php foreach($result as $each) { ?>
                     <label>
-                        <span>Ảnh 1: </span>
+                        <span>Thay Ảnh phụ: </span>
                         <input type="file" class="imgInput" name="image[]">
-                        <img height="200" class="imgShow" src="" alt="">
+                        <img height="200" class="imgShow" src="./sub_img/<?php echo $each['source'] ?>" alt="">
                     </label><br>
-                    <label>
-                        <span>Ảnh 2: </span>
-                        <input type="file" class="imgInput" name="image[]">
-                        <img height="200" class="imgShow" src="" alt="">
-                    </label><br>
-                    <label>
-                        <span>Ảnh 3: </span>
-                        <input type="file" class="imgInput" name="image[]">
-                        <img height="200" class="imgShow" src="" alt="">
-                    </label><br>
-                    <label>
-                        <span>Ảnh 4: </span>
-                        <input type="file" class="imgInput" name="image[]">
-                        <img height="200" class="imgShow" src="" alt="">
-                    </label><br>
-                    <button>Thêm thông tin sản phẩm</button>
+                    <?php } ?>
+                    <button>Cập nhật</button>
                 </form>
             </div>
             <?php require '../root/footer.php' ?>

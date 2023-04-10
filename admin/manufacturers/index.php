@@ -35,23 +35,26 @@ if (isset($_GET['page'])) {
                         Quản lý Hãng sản xuất
                     </h2>
                     <div class="row statistic">
-                        <div class="col l-o-4"></div>
-                        <div class="col l-4">
-                            <div class="statistic__item">
-                                <i class="fa-solid fa-shop statistic__icon"></i>
-                                <div class="statistic__wrap">
-                                    <div class="statistic__text">Tổng số Hãng sản xuất</div>
-                                    <?php
-                                    $sql = "select id from manufacturers";
-                                    $result = mysqli_query($connect, $sql);
-                                    $num_row = mysqli_num_rows($result);
-                                    ?>
-                                    <div class="statistic__number"><?php echo $num_row ?></div>
+                        <div class="col l-o-3"></div>
+                        <div class="col l-o-3"></div>
+                        <div class="col l-3">
+                            <div class="statistic__item bg-info">
+                                <div class="statistic__item-wrap">
+                                    <i class="fa-solid fa-shop statistic-item-icon"></i>
+                                    <div class="statistic__item-info">
+                                        <?php
+                                        $sql = "select id from manufacturers";
+                                        $result = mysqli_query($connect, $sql);
+                                        $num_row = mysqli_num_rows($result);
+                                        ?>
+                                        <h2 class="info-item-parameter text-center"><?php echo $num_row ?></h2>
+                                        <div class="info-item-name">Tổng số Hãng sản xuất</div>
+                                    </div>
                                 </div>
                             </div>
 
                         </div>
-                        <div class="col l-o-4"></div>
+                        <div class="col l-o-3"></div>
                     </div>
                     <div class="row">
                         <div class="l-o-2"></div>

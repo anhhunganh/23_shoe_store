@@ -41,14 +41,19 @@ require '../check_admin_login.php';
                     <div class="col l-o-2"></div>
                     <div class="col l-8">
                         <div class="row">
-                            <div class="product-info">
+                            <div class="product">
                                 <div class="col l-6">
-                                    <div class="product-info__image">
-                                        <img src="../products/img/<?php echo $each['image'] ?>" alt="">
-                                        <div class="product-info__sub-image row">
+                                    <div class="product-image">
+                                        <img class="product-image__img" src="./img/<?php echo $each['image'] ?>" alt="">
+                                        <div class="sub-image">
+                                            <button id="image_prev" class="sub-image__btn prev"><i class="fa-solid fa-chevron-left fa-beat fa-2xs"></i></button>
+                                            <button id="image_next" class="sub-image__btn next"><i class="fa-solid fa-chevron-right fa-beat fa-2xs"></i></button>
+                                            <div class="sub-image__item" onclick="changeImage('./img/<?php echo $each['image'] ?>')">
+                                                <img class="sub-image__item-img" src="./img/<?php echo $each['image'] ?>" alt="">
+                                            </div>
                                             <?php foreach ($result_sub_img as $sub_img) { ?>
-                                                <div class="l-3">
-                                                    <div class="product-info__image-item"><img src="../products/sub_img/<?php echo $sub_img['source'] ?>" alt=""></div>
+                                                <div class="sub-image__item" onclick="changeImage('./sub_img/<?php echo $sub_img['source'] ?>')">
+                                                    <img class="sub-image__item-img" src="./sub_img/<?php echo $sub_img['source'] ?>" alt="">
                                                 </div>
                                             <?php } ?>
                                         </div>
@@ -57,7 +62,7 @@ require '../check_admin_login.php';
                                 <div class="col l-6">
                                     <div class="product-info__wrap">
                                         <h3 class="text-center">Thông tin chi tiết sản phẩm</h3>
-                                        <a class="product-info__link" href="./form_product_detail.php?id=<?php echo $id ?>">Thêm ảnh cho sản phẩm</a>
+                                        <a class="product-info__link" href="./form_product_detail.php?id=<?php echo $id ?>">Cập nhật ảnh phụ</a>
                                         <a class="product-info__link product-info__link-update" href="./form_update.php?id=<?php echo $id ?>">Update</a>
                                         <?php if ($_SESSION['admin_level'] == 1) { ?>
                                             <a class="product-info__link product-info__link-delete" href="./form_update.php?id=<?php echo $id ?>">Delete</a>
@@ -78,5 +83,19 @@ require '../check_admin_login.php';
         </div>
     </div>
 </body>
+<script>
+    function changeImage(src) {
+        document.querySelector('.product-image__img').src = src;
+    }
+
+    document.getElementById('image_next').onclick = function() {
+        let lists = document.querySelectorAll('.sub-image__item');
+        document.querySelector('.sub-image').appendChild(lists[0])
+    }
+    document.getElementById('image_prev').onclick = function() {
+        let lists = document.querySelectorAll('.sub-image__item');
+        document.querySelector('.sub-image').prepend(lists[lists.length - 1])
+    }
+</script>
 
 </html>

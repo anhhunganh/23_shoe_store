@@ -46,8 +46,24 @@
             values('$name', '$price', '$file_name', '$sub_category_id')";
     mysqli_query($connect, $sql);
 
-        // $last_id_product = mysqli_insert_id($connect);
-        
+    $last_id_product = mysqli_insert_id($connect);
+    $sub_image = $_FILES['sub_image'];
+
+    $folder = 'sub_img/';
+    
+    for($i = 0; $i < count($sub_image['name']); $i++){
+        if($sub_image['size'][$i] > 0) {
+            $file_extention = explode('.',$sub_image['name'][$i])[1];
+            $file_name = time() . $i . '.' . $file_extention;
+            $path_file = $folder . $file_name;
+
+            move_uploaded_file($sub_image['tmp_name'][$i], $path_file);
+            $sql = "insert into product_sub_images(product_id, source) values ('$last_id_product', '$file_name')";
+            mysqli_query($connect, $sql);
+        }else {
+            echo 22;
+        }
+    }
         // $sql_id_size = "select size.id as id from size";
         // $result_id_size = mysqli_query($connect, $sql_id_size);
         // $number_id_size = mysqli_num_rows($result_id_size);
@@ -61,5 +77,5 @@
         //     }
         //     mysqli_query($connect, $sql_product_size);
         // }
-    header('location:./index.php?success=Thêm sản phẩm thành công');
-    exit;
+    // header('location:./index.php?success=Thêm sản phẩm thành công');
+    // exit;

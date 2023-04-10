@@ -113,7 +113,8 @@ require '../check_admin_login.php';
                         echo $_SESSION['error'];
                         unset($_SESSION['error']);
                     }
-                    ?></h2>
+                    ?>
+                </h2>
                 <div class="form-search__wrap">
                     <?php
                     $sql_manufacturer = "select * from manufacturers";
@@ -165,7 +166,7 @@ require '../check_admin_login.php';
                     <?php foreach ($result as $each) { ?>
                         <tr>
                             <td class="td-item__name"><a href="./product_info.php?id=<?php echo $each['id'] ?>"><?php echo $each['name'] ?></a></td>
-                            <td class="text-center td-item__price"><?php echo number_format($each['price'], 0, 0, '.') ?></td>
+                            <td class="text-center td-item__price"><?php echo number_format($each['price'], 0, 0, '.') ?>₫</td>
                             <td class="text-center td-item__name"><a href="../manufacturers/index.php?search=<?php echo $each['manufacturer_name'] ?>"><?php echo $each['manufacturer_name'] ?></a></td>
                             <td class="text-center td-item__name"><a href="../categories/index.php?search=<?php echo $each['category_name'] ?>"><?php echo $each['category_name'] ?></a></td>
                             <td class="text-center"><a href="./product_info.php?id=<?php echo $each['id'] ?>"><img height="100" src="./img/<?php echo $each['image'] ?>" alt=""></a></td>

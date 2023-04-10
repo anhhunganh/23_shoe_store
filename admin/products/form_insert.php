@@ -64,7 +64,28 @@ require '../check_admin_login.php';
                     </label><br>
                     <label>
                         <span>Ảnh sản phẩm</span>
-                        <input type="file" name="image">
+                        <input type="file" name="image" class="imgInput">
+                        <img height="200" class="imgShow" src="" alt="">
+                    </label><br>
+                    <label>
+                        <span>Ảnh sản phẩm</span>
+                        <input type="file" name="sub_image[]" class="imgInput">
+                        <img height="200" class="imgShow" src="" alt="">
+                    </label><br>
+                    <label>
+                        <span>Ảnh sản phẩm</span>
+                        <input type="file" name="sub_image[]" class="imgInput">
+                        <img height="200" class="imgShow" src="" alt="">
+                    </label><br>
+                    <label>
+                        <span>Ảnh sản phẩm</span>
+                        <input type="file" name="sub_image[]" class="imgInput">
+                        <img height="200" class="imgShow" src="" alt="">
+                    </label><br>
+                    <label>
+                        <span>Ảnh sản phẩm</span>
+                        <input type="file" name="sub_image[]" class="imgInput">
+                        <img height="200" class="imgShow" src="" alt="">
                     </label><br>
                     <button>Thêm sản phẩm</button>
                 </form>
@@ -74,6 +95,21 @@ require '../check_admin_login.php';
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
+    imgInput = document.querySelectorAll(".imgInput")
+    // console.log(imgInput)
+    imgShow = document.querySelectorAll(".imgShow")
+    for (let index = 0; index < imgInput.length; index++) {
+        // console.log(index)
+        imgInput[index].onchange = evt => {
+            const [file] = imgInput[index].files
+            console.log(file)
+            if (file) {
+                imgShow[index].src = URL.createObjectURL(file)
+            }
+        }
+        // console.log(element);
+    }
+
     $(document).ready(function () {
         $(".manufacturer_id").change(function () {
             var manufacturer_id = $(".manufacturer_id").val();

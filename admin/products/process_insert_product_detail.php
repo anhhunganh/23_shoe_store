@@ -3,8 +3,6 @@
     
     $product_id = $_POST['product_id'];
     $image = $_FILES['image'];
-    // echo json_encode($image);
-    // die;
     
     require '../root/connect.php';
     $folder = 'sub_img/';
@@ -16,14 +14,18 @@
             $path_file = $folder . $file_name;
 
             move_uploaded_file($image['tmp_name'][$i], $path_file);
-            $sql = "insert into product_sub_images(product_id, source) values ('$product_id', '$file_name')";
+            $sql = "update product_sub_images
+                    set
+                        source = '$file_name'
+                    where
+                        product_id = '$product_id'";
             mysqli_query($connect, $sql);
         }else {
-            echo 22;
+            header("location:./form_product_detail.php?id=$product_id");
+            $_SESSION['error'] = "Cập nhật ảnh không thành công";
+            exit;
         }
     }
-    // die($sql);
-
 
 
     $error = mysqli_error($connect);
