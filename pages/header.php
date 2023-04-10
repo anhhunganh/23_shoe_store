@@ -13,9 +13,32 @@ require '../admin/root/connect.php';
                 </div>
                 <div class="col l-4">
                     <div class="header-wrap">
-                        <div class="wrap-item">Search</div>
-                        <div class="wrap-item">Acount</div>
-                        <div class="wrap-item"><a href="../cart/">Giỏ hàng</a></div>
+                        <div class="wrap-item">
+                            <a class="header-wrap-item-link" href=""><i class="fa-solid fa-magnifying-glass"></i></a>
+                        </div>
+                        <div class="wrap-item">
+                            <a class="header-wrap-item-link" href="../account/index.php?view=main"><i class="fa-regular fa-user"></i></a>
+                        </div>
+                        <div class="wrap-item">
+                            <a class="header-wrap-item-link" href="../cart/">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                                <div class="cart-quantity">
+                                    <?php
+                                    $quantity = 0;
+                                    if (isset($_SESSION['cart'])) {
+                                        $cart = $_SESSION['cart'];
+                                        foreach ($cart as $id => $each) {
+                                            $quantity_item = (int)$each['quantity'];
+                                            $quantity += $quantity_item;
+                                        }
+                                        echo $quantity;
+                                    } else {
+                                        echo $quantity;
+                                    }
+                                    ?>
+                                </div>
+                            </a>
+                        </div>
                         <div class="wrap-item"></div>
                     </div>
                 </div>
@@ -30,9 +53,26 @@ require '../admin/root/connect.php';
                 <li class="header-bottom__item"><a href="../collection/index.php?search=Adidas" class="header-bottom__item-link">Adidas</a></li>
                 <li class="header-bottom__item"><a href="../collection/index.php?search=" class="header-bottom__item-link">MBL</a></li>
                 <li class="header-bottom__item"><a href="../collection/index.php?search=New Balance" class="header-bottom__item-link">New Balance</a></li>
-                <li class="header-bottom__item"><a href="../collection/index.php?search=" class="header-bottom__item-link"></a></li>
-                <li class="header-bottom__item"><a href="../collection/index.php?search=" class="header-bottom__item-link"></a></li>
-                <li class="header-bottom__item"><a href="../collection/index.php?search=" class="header-bottom__item-link"></a></li>
+                <li class="header-bottom__item"><a href="../collection/index.php?search=search=puma" class="header-bottom__item-link">Puma</a></li>
+                <li class="header-bottom__item">
+                    <a href="#" class="header-bottom__item-link">Orther <i class="fa-solid fa-chevron-down"></i></a>
+                    <div class="dropdown">
+                        <ul class="header-bottom__wrap">
+                            <li class="header-bottom__sub-item">
+                                <a href="../collection/index.php?search=Vans">Vans</a>
+                            </li>
+                            <li class="header-bottom__sub-item">
+                                <a href="../collection/index.php?search=Converse">Converse</a>
+                            </li>
+                            <li class="header-bottom__sub-item">
+                                <a href="../collection/index.php?search=Louis Vuitton">Louis Vuitton</a>
+                            </li>
+                            <li class="header-bottom__sub-item">
+                                <a href="../collection/index.php?search=Saint Laurent">Saint Laurent</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
             </ul>
         </div>
     </div>
