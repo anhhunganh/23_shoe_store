@@ -19,6 +19,22 @@
     text-align: center;
 }
 
+.bg-info {
+    background-color: #17a2b8;
+}
+
+.bg-success {
+    background-color: #28a745;
+}
+
+.bg-warning {
+    background-color: #ffc107;
+}
+
+.bg-error {
+    background-color: #dc3545;
+}
+
 html {
     font-family: 'Source Sans Pro', sans-serif;
     box-sizing: border-box;
@@ -158,7 +174,7 @@ html {
 
 .header__form input {
     height: 36px;
-    width: 240px;
+    width: 280px;
     padding: 8px 16px;
     font-size: 14px;
     outline: none;
@@ -250,10 +266,40 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 52px;
-    max-height: 52px;
+    padding: 12px 0 0;
     border-radius: 4px;
-    background-color: #ccc;
+    overflow: hidden;
+}
+
+.statistic__item-wrap {
+    display: flex; 
+    align-items: center; 
+    justify-content:space-around; 
+    width: 100%; 
+    padding: 20px 0;
+}
+
+.statistic__item-info {
+    padding: 0 20px;
+}
+
+.statistic__item-link {
+
+}
+
+.info-item-parameter {
+    font-size: 36px;
+    color: var(--white-color);
+}
+
+.info-item-name {
+    font-size: 18px;
+    color: var(--white-color);
+}
+
+.statistic-item-icon {
+    font-size: 42px; 
+    color: #666;
 }
 
 .statistic__icon {
@@ -348,6 +394,12 @@ td {
     color: var(--white-color);
     background-color: #dc3545;
     border-radius: 8px;
+}
+
+.td-display-flex {
+    display: flex;
+    flex-direction: column;
+    border: none;
 }
 
 
@@ -465,23 +517,61 @@ td {
     cursor: pointer;
 }
 
-.product-info {
+.product {
     width: 100%;
     margin-top: 60px;
     display: flex;
 }
 
-.product-info__image img {
+.product-image__img {
     height: 500px;
     width: 500px;
 }
 
-.product-info__sub-image {
-    margin-top: -60px;
-    padding: 0 20px;
+.sub-image {
+    position: relative;
+    margin: -60px 0 0;
+    width: 480px;
+    max-width: 100%;
+    overflow: auto;
+    display: flex;
+    scroll-behavior: smooth;
 }
 
-.product-info__image-item img {
+.sub-image::-webkit-scrollbar {
+    display: none;
+}
+
+.btn-wrap {
+    position: relative;
+    display: flex;
+    width: 480px;
+}
+
+.sub-image__btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 4px 8px;
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    font-weight: 700;
+}
+
+.sub-image__btn.prev {
+    left: 0;
+}
+
+.sub-image__btn.next {
+    right: 0;
+}
+
+.sub-image__item {
+    
+}
+
+.sub-image__item-img {
     height: 120px;
     width: 120px;
 }
