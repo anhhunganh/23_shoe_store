@@ -3,6 +3,8 @@
 
     $id = $_GET['id'];
     $type = $_GET['type'];
+    // $id = $_POST['id'];
+    // $type = $_POST['type'];
 
     if($type === 'decrease') {
         if($_SESSION['cart'][$id]['quantity'] > 1 ) {

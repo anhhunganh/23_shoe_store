@@ -19,7 +19,7 @@
     if(empty($_SESSION['cart'][$id . $size])) {
         
         $_SESSION['cart'][$id . $size]['name'] = $each['name'];
-        $_SESSION['cart'][$id . $size]['id'] = $each['id'];
+        $_SESSION['cart'][$id . $size]['product_id'] = $each['id'];
         $_SESSION['cart'][$id . $size]['price'] = $each['price'];
         $_SESSION['cart'][$id . $size]['image'] = $each['image'];
         $_SESSION['cart'][$id . $size]['size'] = $size;
